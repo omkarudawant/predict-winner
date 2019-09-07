@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<title>Predicting Winning Team</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+<style>
+
+body{
+  font-family: 'Titillium Web', sans-serif;
+  color: #fff;
+  background-color: #000;
+  height: 100%;
+  line-height: 2.5;
+  margin: 0;
+}
+
+
+h1{
+	font-size: 38px;
+	line-height: 45px;
+}
+h2{
+	color: #fff;
+}
+h3{
+	font-size: 22px;
+}
+
+strong{
+	font-size: 25px;
+	color: #461684;
+}
+
+form {
+  font-size: 25px;
+  padding-right: 15%;
+  padding-left: 15%;
+}
+
+a{
+	color: yellow;
+}
+
+.header-content{
+	padding-top: 3%;
+	padding-right: 15%;
+	padding-left: 15%;
+	line-height: 36px;
+	word-spacing: 3px;
+	align-content: center;
+}
+
+
+input{
+	align-content: center;
+	font-size: 18px;
+	margin-top: 10px;
+	padding-left: 10px;
+	width: 85%;
+	border-radius: 25px;
+
+}
+
+button{
+	border-radius: 20px;
+	font-size: 21px;
+	width: 200px;
+	background-color: #295FD2;
+}
+.submit{
+	width: 60%;
+	font-size: 30px;
+	border-radius: 30px; 
+	background-color: #9175ff;
+}
+
+.prediction{
+	align-content: center;
+	padding-right: 15%;
+	padding-left: 15%;
+}
+
+</style>
+<body>
+<center>
+	<h1>Predict Winning Team</h1>	
+	<div class="header-content">
+	<h3>
+		This app predicts whether Home or Away team is going to win/lose or there will be a draw for English Premier League matches. For prediction, XGBoost classifier is used which has an accuracy score of 98%. The dataset used for training can be found <a href=" http://football-data.co.uk/data.php" target="_blank">here.<a>
+	</h3>
+	</div>
+	<hr>
+	<button value="Refresh Page" onClick="window.location.href=window.location.href">Predict New</button>
+	
+	<div class="prediction">
+		    {% if result == "H" %}
+		    	<h3><strong>Home team</strong> is going to win</h3>
+			{% endif %}
+			
+			{% if result == 'A'%}
+		    	<h3><strong>Away team</strong> is going to win</h3>
+			{% endif %}
+			
+			{% if result == 'D'%}
+		    	<h3>There will be a tie.</h3>
+			{% endif %}
+	  </div>
+	  <hr>
+		<div class="premier-imge">
+		<form action="{{ url_for('main') }}" method="POST">
+
+		    Full Time Home Team Goals:
+		    <input name="FTHG" type="number" required>
+		    <br> 
+		    
+		    Full Time Away Team Goals:
+		    <input name="FTAG" type="number" required>
+		    <br>
+		    
+		    Half Time Home Team Goals:
+		    <input name="HTHG" type="number" required>
+		    <br>
+		    
+		    Half Time Away Team Goals:
+		    <input name="HTAG" type="number" required>
+		    <br>
+		    
+		    Home Team Shots:
+		    <input name="HS" type="number" required>
+		    <br>
+		    
+		    Away Team Shots:
+		    <input name="AS" type="number" required>
+		    <br>
+		    
+		    Home Team Shots on Target:
+		    <input name="HST" type="number" required>
+		    <br>
+		    
+		    Away Team Shots on Target:
+		    <input name="AST" type="number" required>
+		    <br>
+		    
+		    Home Team Fouls Committed:
+		    <input name="HF" type="number" required>
+		    <br>
+		    
+		    Away Team Fouls Committed:
+		    <input name="AF" type="number" required>
+		    <br>
+		    
+		    Home Team Corners:
+		    <input name="HC" type="number" required>
+		    <br>
+		    
+		    Away Team Corners:
+		    <input name="AC" type="number" required>
+		    <br>
+		    
+		    Home Team Yellow Cards:
+		    <input name="HY" type="number" required>
+		    <br>
+		    
+		    Away Team Yellow Cards:
+		    <input name="AY" type="number" required>
+		    <br>
+		    
+		    Home Team Red Cards:
+		    <input name="HR" type="number" required>
+		    <br>
+		    
+		    Away Team Red Cards:
+		    <input name="AR" type="number" required>
+		    
+		    <input id="submit-btn" class="submit" value="Predict" type="submit" >
+
+		</form>
+		<br>
+		</div>
+</center>
+
+</body>
+</html>
