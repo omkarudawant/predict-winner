@@ -1,102 +1,28 @@
 <!DOCTYPE html>
 <html>
 <title>Predicting Winning Team</title>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
-<style>
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles/index.css')}}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-body{
-  font-family: 'Titillium Web', sans-serif;
-  color: #fff;
-  background-color: #000;
-  height: 100%;
-  line-height: 2.5;
-  margin: 0;
-}
-
-
-h1{
-	font-size: 38px;
-	line-height: 45px;
-}
-h2{
-	color: #fff;
-}
-h3{
-	font-size: 22px;
-}
-
-strong{
-	font-size: 25px;
-	color: #461684;
-}
-
-form {
-  font-size: 25px;
-  padding-right: 15%;
-  padding-left: 15%;
-}
-
-a{
-	color: yellow;
-}
-
-.header-content{
-	padding-top: 3%;
-	padding-right: 15%;
-	padding-left: 15%;
-	line-height: 36px;
-	word-spacing: 3px;
-	align-content: center;
-}
-
-
-input{
-	align-content: center;
-	font-size: 18px;
-	margin-top: 10px;
-	padding-left: 10px;
-	width: 85%;
-	border-radius: 25px;
-
-}
-
-button{
-	border-radius: 20px;
-	font-size: 21px;
-	width: 200px;
-	background-color: #295FD2;
-}
-.submit{
-	width: 60%;
-	font-size: 30px;
-	border-radius: 30px; 
-	background-color: #9175ff;
-}
-
-.prediction{
-	align-content: center;
-	padding-right: 15%;
-	padding-left: 15%;
-}
-
-</style>
 <body>
 <center>
-	<h1>Predict Winning Team</h1>	
-	<div class="header-content">
-	<h3>
-		This app predicts whether Home or Away team is going to win/lose or there will be a draw for English Premier League matches. For prediction, XGBoost classifier is used which has an accuracy score of 98%. The dataset used for training can be found <a href=" http://football-data.co.uk/data.php" target="_blank">here.<a>
-	</h3>
-	</div>
+	<h1>
+		Predict Winning Team
+	</h1>	
+		<div class="header-content">
+			<p>
+				This app predicts whether Home or Away team is going to win/lose or there will be a draw for English Premier League matches. 
+			</p>
+		</div>
 	<hr>
 	<button value="Refresh Page" onClick="window.location.href=window.location.href">Predict New</button>
 	
 	<div class="prediction">
-		    {% if result == "H" %}
+		<p>
+			Result: {{ result }}
+		</p>
+		    <!-- {% if result == "H" %}
 		    	<h3><strong>Home team</strong> is going to win</h3>
 			{% endif %}
 			
@@ -106,7 +32,7 @@ button{
 			
 			{% if result == 'D'%}
 		    	<h3>There will be a tie.</h3>
-			{% endif %}
+			{% endif %} -->
 	  </div>
 	  <hr>
 		<div class="premier-imge">

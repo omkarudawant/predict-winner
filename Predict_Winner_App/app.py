@@ -1,12 +1,11 @@
 import flask
-import pickle
+import joblib
 from pandas import DataFrame as df
 from flask import request
 
 app = flask.Flask(__name__, template_folder='templates')
 
-with open(f'model/XGBoost.pkl', 'rb') as model:
-	xgb = pickle.load(model)
+model = joblib.load('model/model.joblib')
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -38,10 +37,13 @@ def main():
 		print(data)
 		input = df(data)
 		print(input)
-		prediction = xgb.predict(input)[0]
+		prediction = model.predict(input)
+		print(f'Pred: {prediction}')
 		return flask.render_template('index.html',
 			original_input = {'FTHG':FTHG, 'FTAG':FTAG, 'HTHG':HTHG,
 			'HTAG':HTAG, 'HS':HS, 'AS':AS, 'HST':HST, 'AST':AST, 'HF':HF, 'AF':AF,
 			'HC':HC, 'AC':AC, 'HY':HY, 'AY':AY, 'HR':HR, 'AR':AR}, result=prediction)
-while __name__ == '__main__':
-	app.run(debug=True)
+
+
+if __name__ == '__main__':
+	app.run(port=5001, debug=True)
