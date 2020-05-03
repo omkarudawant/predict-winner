@@ -2,6 +2,18 @@
 
 Predicting winning team from English Premier League.
 
-Install dependencies with `pip install -r requirements.txt`
+## Dependencies
 
-Live demo https://predict-winner.herokuapp.com
+- <a href='https://scikit-learn.org/stable/'>scikit-learn</a>
+- <a href='https://xgboost.readthedocs.io/en/latest/python/index.html'>xgboost</a>
+- <a href='https://pandas.pydata.org/'>pandas</a>
+
+Install missing dependencies with <a href='https://pypi.org/project/pip/'>pip</a>.
+
+## Usage
+
+Run `jupyter notebook` in terminal, and the code will popup in your browser.
+
+Web-App for this project can be found at <a href="https://predict-winner.herokuapp.com/" target="_blank">Predict-Winner</a>.
+
+Install <a href='https://jupyter.org/' target="_blank">Jupyter</a> from here.

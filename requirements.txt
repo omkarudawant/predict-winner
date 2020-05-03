@@ -1,0 +1,6 @@
+pandas 
+sklearn
+keras
+Flask
+joblib
+
